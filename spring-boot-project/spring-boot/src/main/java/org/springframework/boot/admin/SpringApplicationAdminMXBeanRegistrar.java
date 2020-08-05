@@ -137,7 +137,7 @@ public class SpringApplicationAdminMXBeanRegistrar implements ApplicationContext
 		ManagementFactory.getPlatformMBeanServer().unregisterMBean(this.objectName);
 	}
 
-	private class SpringApplicationAdmin implements SpringApplicationAdminMXBean {
+	private class SpringApplicationAdmin implements org.springframework.boot.admin.SpringApplicationAdminMXBean {
 
 		@Override
 		public boolean isReady() {

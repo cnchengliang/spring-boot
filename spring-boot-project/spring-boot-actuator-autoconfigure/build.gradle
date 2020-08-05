@@ -10,15 +10,15 @@ plugins {
 
 description = "Spring Boot Actuator AutoConfigure"
 
-configurations {
-	asciidoctorExtensions {
-		extendsFrom dependencyManagement
-	}
-	documentation
-}
+//configurations {
+//	asciidoctorExtensions {
+//		extendsFrom dependencyManagement
+//	}
+//	documentation
+//}
 
 dependencies {
-	asciidoctorExtensions("org.springframework.restdocs:spring-restdocs-asciidoctor")
+//	asciidoctorExtensions("org.springframework.restdocs:spring-restdocs-asciidoctor")
 
 	api(project(":spring-boot-project:spring-boot-actuator"))
 
@@ -147,61 +147,61 @@ dependencies {
 	testRuntimeOnly("org.springframework.security:spring-security-saml2-service-provider")
 }
 
-compileJava {
-	options.compilerArgs << "-parameters"
-}
+//compileJava {
+//	options.compilerArgs << "-parameters"
+//}
+//
+//compileTestJava {
+//	options.compilerArgs << "-parameters"
+//}
 
-compileTestJava {
-	options.compilerArgs << "-parameters"
-}
+//test {
+//	outputs.dir("${buildDir}/generated-snippets")
+//}
 
-test {
-	outputs.dir("${buildDir}/generated-snippets")
-}
+//task dependencyVersions(type: org.springframework.boot.build.constraints.ExtractVersionConstraints) {
+//	enforcedPlatform(":spring-boot-project:spring-boot-dependencies")
+//}
 
-task dependencyVersions(type: org.springframework.boot.build.constraints.ExtractVersionConstraints) {
-	enforcedPlatform(":spring-boot-project:spring-boot-dependencies")
-}
+//tasks.withType(org.asciidoctor.gradle.jvm.AbstractAsciidoctorTask) {
+//	dependsOn dependencyVersions
+//	baseDirFollowsSourceDir()
+//	doFirst {
+//		def versionConstraints = dependencyVersions.versionConstraints
+//		def integrationVersion = versionConstraints["org.springframework.integration:spring-integration-core"]
+//		def integrationDocs = String.format("https://docs.spring.io/spring-integration/docs/%s/reference/html/", integrationVersion)
+//		attributes "spring-integration-docs": integrationDocs
+//	}
+//}
 
-tasks.withType(org.asciidoctor.gradle.jvm.AbstractAsciidoctorTask) {
-	dependsOn dependencyVersions
-	baseDirFollowsSourceDir()
-	doFirst {
-		def versionConstraints = dependencyVersions.versionConstraints
-		def integrationVersion = versionConstraints["org.springframework.integration:spring-integration-core"]
-		def integrationDocs = String.format("https://docs.spring.io/spring-integration/docs/%s/reference/html/", integrationVersion)
-		attributes "spring-integration-docs": integrationDocs
-	}
-}
+//asciidoctor {
+//	configurations "asciidoctorExtensions"
+//	dependsOn test
+//	sources {
+//		include "index.adoc"
+//	}
+//}
+//
+//asciidoctorPdf {
+//	configurations "asciidoctorExtensions"
+//	dependsOn test
+//	sources {
+//		include "index.adoc"
+//	}
+//}
 
-asciidoctor {
-	configurations "asciidoctorExtensions"
-	dependsOn test
-	sources {
-		include "index.adoc"
-	}
-}
+//task zip(type: Zip) {
+//	dependsOn asciidoctor, asciidoctorPdf
+//	duplicatesStrategy "fail"
+//	from(asciidoctorPdf.outputDir) {
+//		into "pdf"
+//		rename { "spring-boot-actuator-web-api.pdf" }
+//	}
+//	from(asciidoctor.outputDir) {
+//		into "html"
+//	}
+//}
 
-asciidoctorPdf {
-	configurations "asciidoctorExtensions"
-	dependsOn test
-	sources {
-		include "index.adoc"
-	}
-}
-
-task zip(type: Zip) {
-	dependsOn asciidoctor, asciidoctorPdf
-	duplicatesStrategy "fail"
-	from(asciidoctorPdf.outputDir) {
-		into "pdf"
-		rename { "spring-boot-actuator-web-api.pdf" }
-	}
-	from(asciidoctor.outputDir) {
-		into "html"
-	}
-}
-
-artifacts {
-	documentation zip
-}
+//artifacts {
+//	documentation zip
+//}
